@@ -1,0 +1,24 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+builtin_func	/home/parsa/Desktop/shell/builtin.c	/^int (*builtin_func[]) (char **) = {$/;"	v
+builtin_str	/home/parsa/Desktop/shell/builtin.c	/^char *builtin_str[] = {$/;"	v
+check_alloc	/home/parsa/Desktop/shell/builtin.c	/^void check_alloc(char *b)$/;"	f	signature:(char *b)
+get_prompt	/home/parsa/Desktop/shell/prompt.c	/^char *get_prompt()$/;"	f
+lsh_cd	/home/parsa/Desktop/shell/builtin.c	/^int lsh_cd(char **args)$/;"	f	signature:(char **args)
+lsh_execute	/home/parsa/Desktop/shell/lsh.c	/^int lsh_execute(char **args)$/;"	f	signature:(char **args)
+lsh_exit	/home/parsa/Desktop/shell/builtin.c	/^int lsh_exit(char **args)$/;"	f	signature:(char **args)
+lsh_help	/home/parsa/Desktop/shell/builtin.c	/^int lsh_help(char **args)$/;"	f	signature:(char **args)
+lsh_launch	/home/parsa/Desktop/shell/lsh.c	/^int lsh_launch(char **args)$/;"	f	signature:(char **args)
+lsh_loop	/home/parsa/Desktop/shell/lsh.c	/^void lsh_loop(void)$/;"	f	signature:(void)
+lsh_num_builtins	/home/parsa/Desktop/shell/builtin.c	/^int lsh_num_builtins() {$/;"	f
+lsh_read_line	/home/parsa/Desktop/shell/lsh.c	/^char *lsh_read_line()$/;"	f
+lsh_split_line	/home/parsa/Desktop/shell/lsh.c	/^char **lsh_split_line(char *line)$/;"	f	signature:(char *line)
+main	/home/parsa/Desktop/shell/lsh.c	/^int main(int argc,char **arcv)$/;"	f	signature:(int argc,char **arcv)
+prompt	/home/parsa/Desktop/shell/prompt.c	/^char* prompt;$/;"	v
+set_prompt	/home/parsa/Desktop/shell/prompt.c	/^void set_prompt(char *prm)$/;"	f	signature:(char *prm)
+showpath	/home/parsa/Desktop/shell/prompt.c	/^bool showpath;$/;"	v
+write_prompt	/home/parsa/Desktop/shell/prompt.c	/^void write_prompt()$/;"	f
