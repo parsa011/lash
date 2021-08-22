@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <string.h>
 #include "basics.h"
-#include "lsh.h"
+#include "lash.h"
 #include "prompt.h"
 
 char* prompt;

@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <string.h>
 #include "basics.h"
-#include "lsh.h"
+#include "lash.h"
 #include "prompt.h"
 #include "builtin.h"
 
@@ -14,12 +14,12 @@ int main(int argc,char **arcv)
     set_prompt(">  ");
     showpath = TRUE;
     // Run loop
-    lsh_loop();
+    lash_loop();
 
     return EXIT_SUCCESS;
 }
 
-void lsh_loop(void)
+void lash_loop(void)
 {
     char *line;
     char **args;
@@ -27,9 +27,9 @@ void lsh_loop(void)
     do{
         // writing the prompt
         write_prompt();
-        line = lsh_read_line();
-        args = lsh_split_line(line);
-        status = lsh_execute(args);
+        line = lash_read_line();
+        args = lash_split_line(line);
+        status = lash_execute(args);
 
         free(line);
         free(args);
@@ -40,9 +40,9 @@ void lsh_loop(void)
  *  brief Read a line of input from stdin.
  *  return The line from stdin.
  */
-char *lsh_read_line()
+char *lash_read_line()
 {
-    int bufsize = LSH_RL_BUFSIZE, c;
+    int bufsize = lash_RL_BUFSIZE, c;
     int position = 0;
     char *buffer = malloc(sizeof(char) * bufsize);
 
@@ -61,7 +61,7 @@ char *lsh_read_line()
 
     // If we have exceeded the buffer, reallocate.
     if (position >= bufsize){
-        bufsize += LSH_RL_BUFSIZE;
+        bufsize += lash_RL_BUFSIZE;
         buffer = realloc(buffer,bufsize);
         check_alloc(buffer);
     }
@@ -72,22 +72,22 @@ char *lsh_read_line()
  *  param line The line.
  *  return Null-terminated array of tokens.
  */
-char **lsh_split_line(char *line)
+char **lash_split_line(char *line)
 {
-    int bufsize = LSH_TOK_BUFSIZE, position = 0;
+    int bufsize = lash_TOK_BUFSIZE, position = 0;
     char **tokens = malloc(bufsize *  sizeof(char*));
     char *token;
 
-    token = strtok(line,LSH_TOK_DELIM);
+    token = strtok(line,lash_TOK_DELIM);
     // i have to write a tokenizer for \ / and ....
     while (token != NULL){
         tokens[position++] = token;
 
         if (position >= bufsize){
-            bufsize += LSH_TOK_BUFSIZE;
+            bufsize += lash_TOK_BUFSIZE;
             tokens = realloc(tokens,bufsize * sizeof(char*));
         }
-        token = strtok(NULL, LSH_TOK_DELIM);
+        token = strtok(NULL, lash_TOK_DELIM);
     }
     tokens[position] = NULL;
     return tokens;
@@ -98,7 +98,7 @@ char **lsh_split_line(char *line)
  *  param args Null terminated list of arguments (including program).
  *  return Always returns 1, to continue execution.
  */
-int lsh_launch(char **args)
+int lash_launch(char **args)
 {
     pid_t pid, wpid;
     int status;
@@ -107,12 +107,12 @@ int lsh_launch(char **args)
     if (pid == 0) {
         // Child process
         if (execvp(args[0], args) == -1) {
-            perror("lsh");
+            perror("lash");
         }
         exit(EXIT_FAILURE);
     } else if (pid < 0) {
         // Error forking
-        perror("lsh");
+        perror("lash");
     } else {
         // Parent process
         do {
@@ -128,7 +128,7 @@ int lsh_launch(char **args)
  *  param args Null terminated list of arguments.
  *  return 1 if the shell should continue running, 0 if it should terminate
  */
-int lsh_execute(char **args)
+int lash_execute(char **args)
 {
     int i;
 
@@ -137,11 +137,11 @@ int lsh_execute(char **args)
         return 1;
     }
 
-    for (i = 0; i < lsh_num_builtins(); i++) {
+    for (i = 0; i < lash_num_builtins(); i++) {
         if (strcmp(args[0], builtin_str[i]) == 0) {
             return (*builtin_func[i])(args);
         }
     }
 
-    return lsh_launch(args);
+    return lash_launch(args);
 }

@@ -1,10 +1,10 @@
 /*
  *  Function Declarations for builtin shell commands:
  */
-int lsh_cd(char **args);
-int lsh_help(char **args);
-int lsh_exit(char **args);
-int lsh_num_builtins();
+int lash_cd(char **args);
+int lash_help(char **args);
+int lash_exit(char **args);
+int lash_num_builtins();
 
 extern char *builtin_str[];
 
