@@ -7,16 +7,23 @@
 builtin_func	/home/parsa/Desktop/shell/builtin.c	/^int (*builtin_func[]) (char **) = {$/;"	v
 builtin_str	/home/parsa/Desktop/shell/builtin.c	/^char *builtin_str[] = {$/;"	v
 check_alloc	/home/parsa/Desktop/shell/builtin.c	/^void check_alloc(char *b)$/;"	f	signature:(char *b)
+eval_prompt	/home/parsa/Desktop/shell/prompt.c	/^char *eval_prompt()$/;"	f
 get_prompt	/home/parsa/Desktop/shell/prompt.c	/^char *get_prompt()$/;"	f
-lsh_cd	/home/parsa/Desktop/shell/builtin.c	/^int lsh_cd(char **args)$/;"	f	signature:(char **args)
-lsh_execute	/home/parsa/Desktop/shell/lsh.c	/^int lsh_execute(char **args)$/;"	f	signature:(char **args)
-lsh_exit	/home/parsa/Desktop/shell/builtin.c	/^int lsh_exit(char **args)$/;"	f	signature:(char **args)
-lsh_help	/home/parsa/Desktop/shell/builtin.c	/^int lsh_help(char **args)$/;"	f	signature:(char **args)
-lsh_launch	/home/parsa/Desktop/shell/lsh.c	/^int lsh_launch(char **args)$/;"	f	signature:(char **args)
-lsh_loop	/home/parsa/Desktop/shell/lsh.c	/^void lsh_loop(void)$/;"	f	signature:(void)
-lsh_num_builtins	/home/parsa/Desktop/shell/builtin.c	/^int lsh_num_builtins() {$/;"	f
-lsh_read_line	/home/parsa/Desktop/shell/lsh.c	/^char *lsh_read_line()$/;"	f
-lsh_split_line	/home/parsa/Desktop/shell/lsh.c	/^char **lsh_split_line(char *line)$/;"	f	signature:(char *line)
+lash_cd	/home/parsa/Desktop/shell/builtin.c	/^int lash_cd(char **args)$/;"	f	signature:(char **args)
+lash_execute	/home/parsa/Desktop/shell/lash.c	/^int lash_execute(char **args)$/;"	f	signature:(char **args)
+lash_execute	/home/parsa/Desktop/shell/lsh.c	/^int lash_execute(char **args)$/;"	f	signature:(char **args)
+lash_exit	/home/parsa/Desktop/shell/builtin.c	/^int lash_exit(char **args)$/;"	f	signature:(char **args)
+lash_help	/home/parsa/Desktop/shell/builtin.c	/^int lash_help(char **args)$/;"	f	signature:(char **args)
+lash_launch	/home/parsa/Desktop/shell/lash.c	/^int lash_launch(char **args)$/;"	f	signature:(char **args)
+lash_launch	/home/parsa/Desktop/shell/lsh.c	/^int lash_launch(char **args)$/;"	f	signature:(char **args)
+lash_loop	/home/parsa/Desktop/shell/lash.c	/^void lash_loop(void)$/;"	f	signature:(void)
+lash_loop	/home/parsa/Desktop/shell/lsh.c	/^void lash_loop(void)$/;"	f	signature:(void)
+lash_num_builtins	/home/parsa/Desktop/shell/builtin.c	/^int lash_num_builtins() {$/;"	f
+lash_read_line	/home/parsa/Desktop/shell/lash.c	/^char *lash_read_line()$/;"	f
+lash_read_line	/home/parsa/Desktop/shell/lsh.c	/^char *lash_read_line()$/;"	f
+lash_split_line	/home/parsa/Desktop/shell/lash.c	/^char **lash_split_line(char *line)$/;"	f	signature:(char *line)
+lash_split_line	/home/parsa/Desktop/shell/lsh.c	/^char **lash_split_line(char *line)$/;"	f	signature:(char *line)
+main	/home/parsa/Desktop/shell/lash.c	/^int main(int argc,char **arcv)$/;"	f	signature:(int argc,char **arcv)
 main	/home/parsa/Desktop/shell/lsh.c	/^int main(int argc,char **arcv)$/;"	f	signature:(int argc,char **arcv)
 prompt	/home/parsa/Desktop/shell/prompt.c	/^char* prompt;$/;"	v
 set_prompt	/home/parsa/Desktop/shell/prompt.c	/^void set_prompt(char *prm)$/;"	f	signature:(char *prm)

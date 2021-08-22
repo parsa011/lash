@@ -1,6 +1,6 @@
-#define lash_RL_BUFSIZE 1024
-#define lash_TOK_BUFSIZE 64
-#define lash_TOK_DELIM " \t\r\n\a"
+#define LASH_RL_BUFSIZE 1024
+#define LASH_TOK_BUFSIZE 64
+#define LASH_TOK_DELIM " \t\r\n\a"
 
 void lash_loop(void);
 char *lash_read_line(void);

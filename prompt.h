@@ -5,3 +5,4 @@ extern bool showpath;
 void write_prompt();
 void set_prompt(char *);
 char *get_prompt();
+char *eval_prompt();

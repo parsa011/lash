@@ -64,7 +64,7 @@ typedef unsigned long int   uint64;
     *a[] = { __VA_ARGS__,NULL}, \
     **ss=a; \
     while((s=*ss++)) \
-        while((*s)&&(++offset<(int)sizeof(buf))) \
+        while((*s)&&((++offset)<(int)sizeof(buf))) \
             *bp++=*s++; \
     if (offset!=sizeof(buf))*bp=0; \
 }while(0)
@@ -90,14 +90,3 @@ typedef unsigned long int   uint64;
  */
 #define IS_EVEN( num )  (!IS_ODD( (num) ))
 #define IS_ODD( num )   ((num) & 1)
-
-/* 
- * Swap integers
- */
-//void swap (int *a,int *b)
-//{
-    //int temp;
-    //temp = *a;
-    //*a = *b;
-    //*b = temp;
-//}

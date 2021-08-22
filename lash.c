@@ -11,7 +11,7 @@
 int main(int argc,char **arcv)
 {
     // load config file
-    set_prompt(">  ");
+    set_prompt("%d >  ");
     showpath = TRUE;
     // Run loop
     lash_loop();
@@ -42,11 +42,9 @@ void lash_loop(void)
  */
 char *lash_read_line()
 {
-    int bufsize = lash_RL_BUFSIZE, c;
+    int bufsize = LASH_RL_BUFSIZE, c;
     int position = 0;
     char *buffer = malloc(sizeof(char) * bufsize);
-
-    check_alloc(buffer);
     
     // If we hit EOF, replace it with a null character and return.
     while (TRUE) {
@@ -61,9 +59,8 @@ char *lash_read_line()
 
     // If we have exceeded the buffer, reallocate.
     if (position >= bufsize){
-        bufsize += lash_RL_BUFSIZE;
+        bufsize += LASH_RL_BUFSIZE;
         buffer = realloc(buffer,bufsize);
-        check_alloc(buffer);
     }
 }
 
@@ -74,20 +71,20 @@ char *lash_read_line()
  */
 char **lash_split_line(char *line)
 {
-    int bufsize = lash_TOK_BUFSIZE, position = 0;
+    int bufsize = LASH_TOK_BUFSIZE, position = 0;
     char **tokens = malloc(bufsize *  sizeof(char*));
     char *token;
 
-    token = strtok(line,lash_TOK_DELIM);
+    token = strtok(line,LASH_TOK_DELIM);
     // i have to write a tokenizer for \ / and ....
     while (token != NULL){
         tokens[position++] = token;
 
         if (position >= bufsize){
-            bufsize += lash_TOK_BUFSIZE;
+            bufsize += LASH_TOK_BUFSIZE;
             tokens = realloc(tokens,bufsize * sizeof(char*));
         }
-        token = strtok(NULL, lash_TOK_DELIM);
+        token = strtok(NULL, LASH_TOK_DELIM);
     }
     tokens[position] = NULL;
     return tokens;

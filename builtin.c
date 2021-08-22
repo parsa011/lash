@@ -3,19 +3,20 @@
 #include "basics.h"
 #include "builtin.h"
 
+
 /*
  * builtin function 
  */
-extern char *builtin_str[] = {
+char *builtin_str[] = {
     "cd",
     "help",
     "exit"
 };
 
 /*
- * some pointer to builtin functions
+ *  List of builtin commands, followed by their corresponding functions.
  */
-extern int (*builtin_func[]) (char **) = {
+int (*builtin_func[]) (char **) = {
     &lash_cd,
     &lash_help,
     &lash_exit
@@ -42,7 +43,8 @@ int lash_cd(char **args)
 int lash_help(char **args)
 {
     int i;
-    printl("modified and improved lsh by pms (parsa mahmoudy sahebi , parsa011 :D)");
+    printl("Stephen Brennan's lash");
+    printl("modified and improved by pms (parsa mahmoudy sahebi , parsa011 :D)");
     printl("Type program names and arguments, and hit enter.");
     printl("The following are built in:");
 
