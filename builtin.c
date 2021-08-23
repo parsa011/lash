@@ -40,10 +40,12 @@ int lash_cd(char **args) {
 
 int lash_help(char **args) {
     int i;
-    printl("Stephen Brennan's lash");
-    printl("modified and improved by pms (parsa mahmoudy sahebi , parsa011 :D)");
-    printl("Type program names and arguments, and hit enter.");
-    printl("The following are built in:");
+    printl(
+    "Stephen Brennan's lash\n"
+    "modified and improved by pms (parsa mahmoudy sahebi , parsa011) and Ali (alichraghi)\n"
+    "Type program names and arguments, and hit enter.\n"
+    "The following are built in:"
+    );
 
     for (i = 0; i < lash_num_builtins(); i++) {
         printf("  %s\n", builtin_str[i]);
