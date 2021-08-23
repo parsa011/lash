@@ -1,0 +1,2 @@
+char *gettime();
+char *getdate();

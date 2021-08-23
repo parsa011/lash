@@ -7,9 +7,9 @@
 #include "lash.h"
 #include "prompt.h"
 #include "lib/string/strlib.h"
+#include "lib/time/time.h"
 
 char* prompt;
-bool showpath;
 
 void write_prompt()
 {
@@ -31,5 +31,7 @@ char *eval_prompt()
     char currentdir[100];
     getcwd(currentdir,sizeof(currentdir));
     char *res = strrpl(prompt,"%d",currentdir);
-    return res;
+    char *currenttime = gettime();
+    char *temp = strrpl(res,"%t",currenttime);
+    return temp; 
 }

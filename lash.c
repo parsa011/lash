@@ -11,8 +11,7 @@
 int main(int argc,char **arcv)
 {
     // load config file
-    set_prompt("%d >  ");
-    showpath = TRUE;
+    set_prompt("\033[033m%d\033[0m -- %t >  ");
     // Run loop
     lash_loop();
 
