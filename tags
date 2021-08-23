@@ -10,6 +10,7 @@ check_alloc	/home/parsa/Desktop/lash/builtin.c	/^void check_alloc(char *b)$/;"	f
 current_user_name	/home/parsa/Desktop/lash/glob.c	/^char *current_user_name;$/;"	v
 eval_prompt	/home/parsa/Desktop/lash/prompt.c	/^char *eval_prompt()$/;"	f
 get_prompt	/home/parsa/Desktop/lash/prompt.c	/^char *get_prompt()$/;"	f
+getdate	/home/parsa/Desktop/lash/lib/time/time.c	/^char *getdate()$/;"	f
 gettime	/home/parsa/Desktop/lash/lib/time/time.c	/^char *gettime()$/;"	f
 init_glob	/home/parsa/Desktop/lash/glob.c	/^void init_glob()$/;"	f
 lash_cd	/home/parsa/Desktop/lash/builtin.c	/^int lash_cd(char **args)$/;"	f	signature:(char **args)

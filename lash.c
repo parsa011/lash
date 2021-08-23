@@ -14,6 +14,7 @@ int main(int argc,char **arcv)
     init_glob();
     // load config file
     set_prompt("\033[033m%p\033[0m -- %t %u \n >  ");
+    //print(gettime());
     // Run loop
     lash_loop();
 

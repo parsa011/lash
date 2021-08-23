@@ -31,8 +31,8 @@ char *eval_prompt()
 {
     char *currentdir = getenv("PWD");
     char *res = strrpl(prompt,"%p",currentdir);
-    char *currenttime = gettime();
-    res = strrpl(res,"%t",currenttime);
+    res = strrpl(res,"%t",gettime());
+    res = strrpl(res,"%d",getdate());
     res = strrpl(res,"%u",current_user_name);
     return res; 
 }
