@@ -7,11 +7,13 @@
 #include "lash.h"
 #include "prompt.h"
 #include "builtin.h"
+#include "glob.h"
 
 int main(int argc,char **arcv)
 {
+    init_glob();
     // load config file
-    set_prompt("\033[033m%d\033[0m -- %t >  ");
+    set_prompt("\033[033m%p\033[0m -- %t %u \n >  ");
     // Run loop
     lash_loop();
 

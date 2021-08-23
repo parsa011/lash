@@ -10,5 +10,6 @@ char *gettime()
 
     time (&rawtime);
     timeinfo = localtime (&rawtime);
+
     return strrpl(asctime(timeinfo),"\n","");
 }

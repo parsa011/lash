@@ -8,6 +8,7 @@
 #include "prompt.h"
 #include "lib/string/strlib.h"
 #include "lib/time/time.h"
+#include "glob.h"
 
 char* prompt;
 
@@ -28,10 +29,10 @@ char *get_prompt()
 
 char *eval_prompt()
 {
-    char currentdir[100];
-    getcwd(currentdir,sizeof(currentdir));
-    char *res = strrpl(prompt,"%d",currentdir);
+    char *currentdir = getenv("PWD");
+    char *res = strrpl(prompt,"%p",currentdir);
     char *currenttime = gettime();
-    char *temp = strrpl(res,"%t",currenttime);
-    return temp; 
+    res = strrpl(res,"%t",currenttime);
+    res = strrpl(res,"%u",current_user_name);
+    return res; 
 }

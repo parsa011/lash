@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-I.
-DEPS = lash.h builtin.h prompt.h history.h input.h ./lib/string/strlib.h ./lib/time/time.h
-OBJ = lash.o builtin.o prompt.o history.o input.o ./lib/string/strlib.o ./lib/time/time.c
+DEPS = lash.h builtin.h prompt.h history.h input.h glob.h ./lib/string/strlib.h ./lib/time/time.h
+OBJ = lash.o builtin.o prompt.o history.o input.o glob.o ./lib/string/strlib.o ./lib/time/time.o
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
