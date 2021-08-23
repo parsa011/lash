@@ -28,4 +28,5 @@ main	/home/parsa/Desktop/shell/lsh.c	/^int main(int argc,char **arcv)$/;"	f	sign
 prompt	/home/parsa/Desktop/shell/prompt.c	/^char* prompt;$/;"	v
 set_prompt	/home/parsa/Desktop/shell/prompt.c	/^void set_prompt(char *prm)$/;"	f	signature:(char *prm)
 showpath	/home/parsa/Desktop/shell/prompt.c	/^bool showpath;$/;"	v
+strrpl	/home/parsa/Desktop/lash/lib/string/strlib.c	/^char* strrpl(char* s, char* old,char* new)$/;"	f	signature:(char* s, char* old,char* new)
 write_prompt	/home/parsa/Desktop/shell/prompt.c	/^void write_prompt()$/;"	f

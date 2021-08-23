@@ -1,5 +1,6 @@
 #include <string.h>
 #include "strlib.h"
+#include <stdlib.h>
 
 char* strrpl(char* s, char* old,char* new)
 {
