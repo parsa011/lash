@@ -1,92 +1,77 @@
-#define print(str)		printf("%s", (str))
-#define printl(str)		printf("%s\n", (str))
+#define print(str) printf("%s", (str))
+#define printl(str) printf("%s\n", (str))
 
 #ifndef EOL
-# define EOL '\n'
+#define EOL '\n'
 #endif
 
 #ifndef var
-#define var	extern
+#define var extern
 #endif
 
-typedef unsigned char	    uchar;
-typedef unsigned short	    ushort;
-typedef unsigned int	    uint;
-typedef unsigned long       ulong;
-typedef signed char         int8;
-typedef unsigned char       uint8;
-typedef signed short int    int16;
-typedef unsigned short int  uint16;
-typedef signed int          int32;
-typedef unsigned int        uint32;
-typedef signed long int     int64;
-typedef unsigned long int   uint64;
+typedef unsigned char uchar;
+typedef unsigned short ushort;
+typedef unsigned int uint;
+typedef unsigned long ulong;
+typedef signed char int8;
+typedef unsigned char uint8;
+typedef signed short int int16;
+typedef unsigned short int uint16;
+typedef signed int int32;
+typedef unsigned int uint32;
+typedef signed long int int64;
+typedef unsigned long int uint64;
 
-/*
- * Boolean constants
- */
+// Boolean constants
 #ifndef TRUE
-# define FALSE	0	    // note: this is an int, not a long!
-# define TRUE	1
+#define FALSE 0  // note: this is an int, not a long!
+#define TRUE 1
 #endif
 
-/*
- * Some usefull constants for strings :D
- */
+// Some usefull constants for strings :D
 #ifndef IN
-# define OUT 0
-# define IN 1
+#define OUT 0
+#define IN 1
 #endif
 
-/*
- * Min and Max :D
- */
+// Min and Max :D
 #ifndef MAX
-# define MAX(a, b) ((a) < (b) ? (b) : (a))
+#define MAX(a, b) ((a) < (b) ? (b) : (a))
 #endif
 #ifndef MIN
-# define MIN(a, b) ((a) < (b) ? (a) : (b))
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
 #endif
 
-/*
- * Two string Concatination
- */
+// Two string Concatination
 #ifndef CONCAT
-# define CONCAT(a,b) a ## b
+#define CONCAT(a, b) a##b
 #endif
 
-/* 
- * n string concatination
- */
-#define strcpyall(buf, offset, ...) do{ \
-    char *bp=(char*)(buf+offset); /*so we can add to the end of a string*/ \
-    const char *s, \
-    *a[] = { __VA_ARGS__,NULL}, \
-    **ss=a; \
-    while((s=*ss++)) \
-        while((*s)&&((++offset)<(int)sizeof(buf))) \
-            *bp++=*s++; \
-    if (offset!=sizeof(buf))*bp=0; \
-}while(0)
+// n string concatination
+#define strcpyall(buf, offset, ...)                                                 \
+    do {                                                                            \
+        char *bp = (char *)(buf + offset); /*so we can add to the end of a string*/ \
+        const char *s,                                                              \
+            *a[] = {__VA_ARGS__, NULL},                                             \
+            **ss = a;                                                               \
+        while ((s = *ss++))                                                         \
+            while ((*s) && ((++offset) < (int)sizeof(buf)))                         \
+                *bp++ = *s++;                                                       \
+        if (offset != sizeof(buf)) *bp = 0;                                         \
+    } while (0)
 
-/* 
- * foreach in c haha
- */
-#define foreach(item, array) \
-    for(int keep=1, \
-            count=0,\
-            size=sizeof (array)/sizeof *(array); \
-            keep && count != size; \
-            keep = !keep, count++) \
-    for(item = (array)+count; keep; keep = !keep)
+// foreach in c haha
+#define foreach(item, array)                         \
+    for (int keep = 1,                               \
+             count = 0,                              \
+             size = sizeof(array) / sizeof *(array); \
+         keep && count != size;                      \
+         keep = !keep, count++)                      \
+        for (item = (array) + count; keep; keep = !keep)
 
-/*
- * LENGTH of an array
- */
-#define ARRAY_LENGTH(array) (sizeof(array) / sizeof (array[0]))
+// LENGTH of an array
+#define ARRAY_LENGTH(array) (sizeof(array) / sizeof(array[0]))
 
-/*
- * is even and odd for number
- */
-#define IS_EVEN( num )  (!IS_ODD( (num) ))
-#define IS_ODD( num )   ((num) & 1)
+// is even and odd for number
+#define IS_EVEN(num) (!IS_ODD((num)))
+#define IS_ODD(num) ((num)&1)

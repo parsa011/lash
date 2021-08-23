@@ -1,5 +1,5 @@
 #define bool char
-extern char* prompt;
+extern char *prompt;
 
 void write_prompt();
 void set_prompt(char *);

@@ -1,35 +1,28 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include "basics.h"
 #include "builtin.h"
 
+#include <stdio.h>
+#include <stdlib.h>
 
-/*
- * builtin function 
- */
+#include "basics.h"
+
+// builtin function
 char *builtin_str[] = {
     "cd",
     "help",
-    "exit"
-};
+    "exit"};
 
-/*
- *  List of builtin commands, followed by their corresponding functions.
- */
-int (*builtin_func[]) (char **) = {
+// List of builtin commands, followed by their corresponding functions.
+int (*builtin_func[])(char **) = {
     &lash_cd,
     &lash_help,
-    &lash_exit
-};
+    &lash_exit};
 
 int lash_num_builtins() {
     return sizeof(builtin_str) / sizeof(char *);
 }
-/*
- *  Builtin function implementations.
- */
-int lash_cd(char **args)
-{
+
+// Builtin function implementations.
+int lash_cd(char **args) {
     if (args[1] == NULL) {
         fprintf(stderr, "lash: expected argument to \"cd\"\n");
     } else {
@@ -40,8 +33,7 @@ int lash_cd(char **args)
     return 1;
 }
 
-int lash_help(char **args)
-{
+int lash_help(char **args) {
     int i;
     printl("Stephen Brennan's lash");
     printl("modified and improved by pms (parsa mahmoudy sahebi , parsa011 :D)");
@@ -56,16 +48,14 @@ int lash_help(char **args)
     return 1;
 }
 
-int lash_exit(char **args)
-{
+int lash_exit(char **args) {
     return 0;
 }
 
 // after every time allocation , will check the target to be allocated
-void check_alloc(char *b)
-{
-    if (!b){
-        fprintf(stderr,"lash : allocation error !");
+void check_alloc(char *b) {
+    if (!b) {
+        fprintf(stderr, "lash : allocation error !");
         exit(EXIT_FAILURE);
     }
 }
