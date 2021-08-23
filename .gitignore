@@ -2,4 +2,5 @@
 *.out
 lash
 dist/
+tags
 .vscode/
