@@ -1,16 +1,16 @@
 CC=gcc
-CFLAGS=-I.
-DEPS = lash.h builtin.h prompt.h history.h input.h glob.h ./lib/string/strlib.h ./lib/time/time.h
-OBJ = lash.o builtin.o prompt.o history.o input.o glob.o ./lib/string/strlib.o ./lib/time/time.o
+CFLAGS=-I. -std=c17
+OBJDIR := dist
+SRC := ./prompt.c ./history.c ./lash.c ./builtin.c ./input.c ./lib/string/strlib.c ./lib/time/time.c
+OBJ := $(SRC:%.c=$(OBJDIR)/%.o)
 
-%.o: %.c $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
+$(OBJDIR)/%.o: %.c
+	mkdir -p '$(@D)'
+	$(CC) -c $< $(CFLAGS) -o $@
 
 lash: $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS)
-
+	$(CC) $^ $(CFLAGS) -o $@
 
 .PHONY: clean
-
 clean:
-	rm -f *.o 
+	rm -rf dist lash
