@@ -1,17 +1,16 @@
+#include "lash.h"
+
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <sys/wait.h>
 #include <unistd.h>
-#include <string.h>
-#include "basics.h"
-#include "lash.h"
-#include "prompt.h"
-#include "builtin.h"
-#include "glob.h"
 
-int main(int argc,char **arcv)
-{
-    init_glob();
+#include "basics.h"
+#include "builtin.h"
+#include "prompt.h"
+
+int main(int argc, char **arcv) {
     // load config file
     set_prompt("\033[033m%p\033[0m -- %t \n >  ");
     //print(gettime());
@@ -21,12 +20,11 @@ int main(int argc,char **arcv)
     return EXIT_SUCCESS;
 }
 
-void lash_loop(void)
-{
+void lash_loop(void) {
     char *line;
     char **args;
     int status;
-    do{
+    do {
         // writing the prompt
         write_prompt();
         line = lash_read_line();
@@ -35,56 +33,54 @@ void lash_loop(void)
 
         free(line);
         free(args);
-    }while (status);
+    } while (status);
 }
 
 /*
- *  brief Read a line of input from stdin.
- *  return The line from stdin.
- */
-char *lash_read_line()
-{
+*  brief Read a line of input from stdin.
+*  return The line from stdin.
+*/
+char *lash_read_line() {
     int bufsize = LASH_RL_BUFSIZE, c;
     int position = 0;
     char *buffer = malloc(sizeof(char) * bufsize);
-    
+
     // If we hit EOF, replace it with a null character and return.
     while (TRUE) {
         c = getchar();
 
-        if (c == EOF || c == EOL){
+        if (c == EOF || c == EOL) {
             buffer[position++] = '\0';
             return buffer;
-        }else 
+        } else
             buffer[position++] = c;
     }
 
     // If we have exceeded the buffer, reallocate.
-    if (position >= bufsize){
+    if (position >= bufsize) {
         bufsize += LASH_RL_BUFSIZE;
-        buffer = realloc(buffer,bufsize);
+        buffer = realloc(buffer, bufsize);
     }
 }
 
 /*
- *  brief Split a line into tokens (very naively).
- *  param line The line.
- *  return Null-terminated array of tokens.
- */
-char **lash_split_line(char *line)
-{
+*  brief Split a line into tokens (very naively).
+*  param line The line.
+*  return Null-terminated array of tokens.
+*/
+char **lash_split_line(char *line) {
     int bufsize = LASH_TOK_BUFSIZE, position = 0;
-    char **tokens = malloc(bufsize *  sizeof(char*));
+    char **tokens = malloc(bufsize * sizeof(char *));
     char *token;
 
-    token = strtok(line,LASH_TOK_DELIM);
+    token = strtok(line, LASH_TOK_DELIM);
     // i have to write a tokenizer for \ / and ....
-    while (token != NULL){
+    while (token != NULL) {
         tokens[position++] = token;
 
-        if (position >= bufsize){
+        if (position >= bufsize) {
             bufsize += LASH_TOK_BUFSIZE;
-            tokens = realloc(tokens,bufsize * sizeof(char*));
+            tokens = realloc(tokens, bufsize * sizeof(char *));
         }
         token = strtok(NULL, LASH_TOK_DELIM);
     }
@@ -93,12 +89,11 @@ char **lash_split_line(char *line)
 }
 
 /*
- *  brief Launch a program and wait for it to terminate.
- *  param args Null terminated list of arguments (including program).
- *  return Always returns 1, to continue execution.
- */
-int lash_launch(char **args)
-{
+*  brief Launch a program and wait for it to terminate.
+*  param args Null terminated list of arguments (including program).
+*  return Always returns 1, to continue execution.
+*/
+int lash_launch(char **args) {
     pid_t pid, wpid;
     int status;
 
@@ -123,12 +118,11 @@ int lash_launch(char **args)
 }
 
 /*
- *  brief Execute shell built-in or launch program.
- *  param args Null terminated list of arguments.
- *  return 1 if the shell should continue running, 0 if it should terminate
- */
-int lash_execute(char **args)
-{
+*  brief Execute shell built-in or launch program.
+*  param args Null terminated list of arguments.
+*  return 1 if the shell should continue running, 0 if it should terminate
+*/
+int lash_execute(char **args) {
     int i;
 
     if (args[0] == NULL) {
