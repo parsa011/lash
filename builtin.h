@@ -1,4 +1,6 @@
-//  Function Declarations for builtin shell commands:
+/*
+*  Function Declarations for builtin shell commands:
+*/
 int lash_cd(char **args);
 int lash_help(char **args);
 int lash_exit(char **args);

@@ -5,13 +5,17 @@
 
 #include "basics.h"
 
-// builtin function
+/*
+* builtin function 
+*/
 char *builtin_str[] = {
     "cd",
     "help",
     "exit"};
 
-// List of builtin commands, followed by their corresponding functions.
+/*
+*  List of builtin commands, followed by their corresponding functions.
+*/
 int (*builtin_func[])(char **) = {
     &lash_cd,
     &lash_help,
@@ -20,8 +24,9 @@ int (*builtin_func[])(char **) = {
 int lash_num_builtins() {
     return sizeof(builtin_str) / sizeof(char *);
 }
-
-// Builtin function implementations.
+/*
+*  Builtin function implementations.
+*/
 int lash_cd(char **args) {
     if (args[1] == NULL) {
         fprintf(stderr, "lash: expected argument to \"cd\"\n");

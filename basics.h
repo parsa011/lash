@@ -22,19 +22,25 @@ typedef unsigned int uint32;
 typedef signed long int int64;
 typedef unsigned long int uint64;
 
-// Boolean constants
+/*
+* Boolean constants
+*/
 #ifndef TRUE
 #define FALSE 0  // note: this is an int, not a long!
 #define TRUE 1
 #endif
 
-// Some usefull constants for strings :D
+/*
+* Some usefull constants for strings :D
+*/
 #ifndef IN
 #define OUT 0
 #define IN 1
 #endif
 
-// Min and Max :D
+/*
+* Min and Max :D
+*/
 #ifndef MAX
 #define MAX(a, b) ((a) < (b) ? (b) : (a))
 #endif
@@ -42,12 +48,16 @@ typedef unsigned long int uint64;
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 #endif
 
-// Two string Concatination
+/*
+* Two string Concatination
+*/
 #ifndef CONCAT
 #define CONCAT(a, b) a##b
 #endif
 
-// n string concatination
+/* 
+* n string concatination
+*/
 #define strcpyall(buf, offset, ...)                                                 \
     do {                                                                            \
         char *bp = (char *)(buf + offset); /*so we can add to the end of a string*/ \
@@ -60,7 +70,9 @@ typedef unsigned long int uint64;
         if (offset != sizeof(buf)) *bp = 0;                                         \
     } while (0)
 
-// foreach in c haha
+/* 
+* foreach in c haha
+*/
 #define foreach(item, array)                         \
     for (int keep = 1,                               \
              count = 0,                              \
@@ -69,9 +81,13 @@ typedef unsigned long int uint64;
          keep = !keep, count++)                      \
         for (item = (array) + count; keep; keep = !keep)
 
-// LENGTH of an array
+/*
+* LENGTH of an array
+*/
 #define ARRAY_LENGTH(array) (sizeof(array) / sizeof(array[0]))
 
-// is even and odd for number
+/*
+* is even and odd for number
+*/
 #define IS_EVEN(num) (!IS_ODD((num)))
 #define IS_ODD(num) ((num)&1)
