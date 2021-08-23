@@ -37,9 +37,9 @@ void lash_loop(void) {
 }
 
 /*
-*  brief Read a line of input from stdin.
-*  return The line from stdin.
-*/
+ *  brief Read a line of input from stdin.
+ *  return The line from stdin.
+ */
 char *lash_read_line() {
     int bufsize = LASH_RL_BUFSIZE, c;
     int position = 0;
@@ -64,10 +64,10 @@ char *lash_read_line() {
 }
 
 /*
-*  brief Split a line into tokens (very naively).
-*  param line The line.
-*  return Null-terminated array of tokens.
-*/
+ *  brief Split a line into tokens (very naively).
+ *  param line The line.
+ *  return Null-terminated array of tokens.
+ */
 char **lash_split_line(char *line) {
     int bufsize = LASH_TOK_BUFSIZE, position = 0;
     char **tokens = malloc(bufsize * sizeof(char *));
@@ -89,10 +89,10 @@ char **lash_split_line(char *line) {
 }
 
 /*
-*  brief Launch a program and wait for it to terminate.
-*  param args Null terminated list of arguments (including program).
-*  return Always returns 1, to continue execution.
-*/
+ *  brief Launch a program and wait for it to terminate.
+ *  param args Null terminated list of arguments (including program).
+ *  return Always returns 1, to continue execution.
+ */
 int lash_launch(char **args) {
     pid_t pid, wpid;
     int status;
@@ -118,10 +118,10 @@ int lash_launch(char **args) {
 }
 
 /*
-*  brief Execute shell built-in or launch program.
-*  param args Null terminated list of arguments.
-*  return 1 if the shell should continue running, 0 if it should terminate
-*/
+ *  brief Execute shell built-in or launch program.
+ *  param args Null terminated list of arguments.
+ *  return 1 if the shell should continue running, 0 if it should terminate
+ */
 int lash_execute(char **args) {
     int i;
 
