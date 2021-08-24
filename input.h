@@ -3,4 +3,9 @@
 #define LASH_TOK_DELIM " \t\r\n\a"
 
 char *lash_read_line(void);
-char **lash_split_line(char *line);
+char **lash_split_line(char *);
+
+/* 
+ *  Utilities
+ */
+char find_special_char(char *);

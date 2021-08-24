@@ -2,11 +2,15 @@
 #define printl(str) printf("%s\n", (str))
 
 #ifndef EOL
-#define EOL '\n'
+# define EOL '\n'
+#endif
+
+#ifndef NULLCHAR
+# define NULLCHAR '\0'
 #endif
 
 #ifndef var
-#define var extern
+# define var extern
 #endif
 
 typedef unsigned char uchar;
@@ -26,33 +30,33 @@ typedef unsigned long int uint64;
 * Boolean constants
 */
 #ifndef TRUE
-#define FALSE 0  // note: this is an int, not a long!
-#define TRUE 1
+# define FALSE 0  // note: this is an int, not a long!
+# define TRUE 1
 #endif
 
 /*
 * Some usefull constants for strings :D
 */
 #ifndef IN
-#define OUT 0
-#define IN 1
+# define OUT 0
+# define IN 1
 #endif
 
 /*
 * Min and Max :D
 */
 #ifndef MAX
-#define MAX(a, b) ((a) < (b) ? (b) : (a))
+# define MAX(a, b) ((a) < (b) ? (b) : (a))
 #endif
 #ifndef MIN
-#define MIN(a, b) ((a) < (b) ? (a) : (b))
+# define MIN(a, b) ((a) < (b) ? (a) : (b))
 #endif
 
 /*
 * Two string Concatination
 */
 #ifndef CONCAT
-#define CONCAT(a, b) a##b
+# define CONCAT(a, b) a##b
 #endif
 
 /* 

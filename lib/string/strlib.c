@@ -36,3 +36,19 @@ char* strrpl(char* s, char* old,char* new)
     result[i] = '\0';
     return result;
 }
+
+int lastindexof(char *s,char n) {
+    for (int i = strlen(s) - 1;i > 0;i--) {
+        if (s[i] == n)
+            return i; 
+    }
+    return -1;
+}
+
+int indexof(char *s,char n) {
+    for (int i = 0;i < strlen(s);i++) {
+        if (*s++ == n)
+            return i;
+    }
+    return -1;
+}

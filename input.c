@@ -1,4 +1,4 @@
-#include "lash.h"
+#include "input.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,8 +9,7 @@
 #include "basics.h"
 #include "builtin.h"
 #include "prompt.h"
-#include "input.h"
-
+#include "lash.h"
 
 /*
  *  brief Read a line of input from stdin.
@@ -64,4 +63,20 @@ char **lash_split_line(char *line) {
     return tokens;
 }
 
-
+/*
+ *  Utility Function
+ *  brief find special chracter in line like > < | and return that
+ */
+char find_special_char(char *line) {
+    while (*line++) {
+        switch (*line) {
+            case '>':
+                return *line;
+            case '<':
+                return *line;
+            case '|':
+                return *line;
+        }
+    }
+    return '\0';
+}

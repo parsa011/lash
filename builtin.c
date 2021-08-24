@@ -1,7 +1,8 @@
+#include "builtin.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "builtin.h"
 #include "basics.h"
 
 /*
@@ -23,6 +24,7 @@ int (*builtin_func[])(char **) = {
 int lash_num_builtins() {
     return sizeof(builtin_str) / sizeof(char *);
 }
+
 /*
  *  Builtin function implementations.
  */
