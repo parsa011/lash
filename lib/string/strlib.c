@@ -46,9 +46,9 @@ int lastindexof(char *s,char n) {
 }
 
 int indexof(char *s,char n) {
-    for (int i = 0;i < strlen(s);i++) {
-        if (*s++ == n)
-            return i;
+    char *e = strchr(s, n);
+    if (e == NULL) {
+        return -1;
     }
-    return -1;
+    return (int)(e - s);
 }

@@ -24,13 +24,18 @@ int main(int argc, char **arcv) {
 void lash_loop(void) {
     char *line;
     char **args;
-    int status;
+    int count;
+    int status = 1;
     do {
         // writing the prompt
         write_prompt();
+        count = 0;
         line = lash_read_line();
-        args = lash_split_line(line);
-        status = lash_execute(args);
+        args = lash_split_line(line,&count);
+        printf("%d\n",count);
+        for (int i  =0 ; i < count;i++)
+            printl(args[i]);
+        //status = lash_execute(args);
 
         free(line);
         free(args);

@@ -10,7 +10,7 @@
 #include "builtin.h"
 #include "prompt.h"
 #include "lash.h"
-
+#include "lib/string/strlib.h"
 /*
  *  brief Read a line of input from stdin.
  *  return The line from stdin.
@@ -43,23 +43,67 @@ char *lash_read_line() {
  *  param line The line.
  *  return Null-terminated array of tokens.
  */
-char **lash_split_line(char *line) {
+char **lash_split_line(char *line,int *count) {
     int bufsize = LASH_TOK_BUFSIZE, position = 0;
     char **tokens = malloc(bufsize * sizeof(char *));
     char *token;
 
-    token = strtok(line, LASH_TOK_DELIM);
+    char *special;
+    int specialcharindex;
+
+    token = strtok(line,LASH_TOK_DELIM);
     // i have to write a tokenizer for \ / and ....
     while (token != NULL) {
-        tokens[position++] = token;
+        special = find_special_char(token);
+
+        if (special != NULL) {
+            specialcharindex = indexof(token,special[0]);       
+            if (specialcharindex == -1) {
+                tokens[position++] = token;
+            }
+            else if (specialcharindex == 0) {
+                tokens[position++] = special;
+                token++;
+            } else if(specialcharindex == strlen(token) - 1) {
+                token[strlen(token)-1] = '\0';
+                tokens[position++] = token;
+                tokens[position++] = special;
+            }
+            else {
+                char* firsthalf = malloc(LASH_TOK_BUFSIZE * sizeof(char*));
+                char* secondhalf = malloc(LASH_TOK_BUFSIZE* sizeof(char*));
+                strcpy(firsthalf,token);
+                strcpy(secondhalf,token);
+
+                // Get First Half
+                firsthalf[specialcharindex] = '\0';
+                tokens[position++] = firsthalf;
+
+                // Add in special
+                tokens[position++] = special;
+
+                // Get Second Half
+                secondhalf = strstr(secondhalf,special);
+                secondhalf++;
+                tokens[position++] = secondhalf;
+
+                token = secondhalf;
+            }
+
+        }
+        else{
+            tokens[position++] = token;
+        }
+
+        token = strtok(NULL,LASH_TOK_DELIM);
 
         if (position >= bufsize) {
             bufsize += LASH_TOK_BUFSIZE;
             tokens = realloc(tokens, bufsize * sizeof(char *));
         }
-        token = strtok(NULL, LASH_TOK_DELIM);
     }
     tokens[position] = NULL;
+    *count = position;
     return tokens;
 }
 
@@ -67,16 +111,27 @@ char **lash_split_line(char *line) {
  *  Utility Function
  *  brief find special chracter in line like > < | and return that
  */
-char find_special_char(char *line) {
+char *find_special_char(char *line) {
     while (*line++) {
         switch (*line) {
             case '>':
-                return *line;
+                return ">\0";
             case '<':
-                return *line;
+                return "<\0";
             case '|':
-                return *line;
+                return "|\0";
         }
     }
-    return '\0';
+    return NULL; 
+}
+
+bool isspecial(char *c) {
+    switch (*c) {
+        case '>':
+        case '<':
+        case '|':
+            return TRUE;
+        default:
+            return FALSE;
+    }
 }
