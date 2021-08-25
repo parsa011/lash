@@ -14,6 +14,7 @@
 #include "lib/string/strlib.h"
 
 int main(int argc, char **arcv) {
+
     set_prompt("\033[033m%p\033[0m %t \n >  ");
     
     // Run loop

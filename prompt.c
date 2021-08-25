@@ -28,7 +28,8 @@ char *get_prompt() {
 
 char *eval_prompt()
 {
-    char *currentdir = getenv("PWD");
+    char currentdir[100];
+    getcwd(currentdir,sizeof(currentdir));
     char *res = strrpl(prompt,"%p",currentdir);
     res = strrpl(res,"%t",gettime());
     res = strrpl(res,"%d",getdate());
