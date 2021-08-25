@@ -13,7 +13,7 @@
 
 int main(int argc, char **arcv) {
     // load config file
-    set_prompt("\033[033m%p\033[0m -- %t \n >  ");
+    set_prompt("\033[033m%p\033[0m %t \n >  ");
     
     // Run loop
     lash_loop();
@@ -32,9 +32,9 @@ void lash_loop(void) {
         count = 0;
         line = lash_read_line();
         args = lash_split_line(line,&count);
-        printf("%d\n",count);
-        for (int i  =0 ; i < count;i++)
-            printl(args[i]);
+        for (int i = 0; i < count ;i++){
+            printf("arg[%d] = '%s'\n",i,args[i]);
+        }
         //status = lash_execute(args);
 
         free(line);
