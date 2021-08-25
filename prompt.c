@@ -29,9 +29,15 @@ char *get_prompt() {
 char *eval_prompt()
 {
     char *currentdir = getenv("PWD");
+    // char *homepath = "/home/";
+    // strcat(homepath,current_user_name);
+    // char *temp = strrpl(currentdir,userpathname,"~/");
+    
     char *res = strrpl(prompt,"%p",currentdir);
     res = strrpl(res,"%t",gettime());
     res = strrpl(res,"%d",getdate());
+
     //res = strrpl(res,"%u",current_user_name);
+
     return res; 
 }

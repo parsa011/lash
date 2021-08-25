@@ -42,7 +42,7 @@ int lash_cd(char **args) {
 int lash_help(char **args) {
     int i;
     printl(
-    "modified and improved by pms (parsa mahmoudy sahebi , parsa011) and Ali (alichraghi)\n"
+    "author : pms (parsa mahmoudy sahebi || parsa011)\n contributer : \n Ali (alichraghi)\n"
     "Type program names and arguments, and hit enter.\n"
     "The following are built in:"
     );
