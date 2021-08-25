@@ -11,12 +11,15 @@
 #include "builtin.h"
 #include "prompt.h"
 #include "input.h"
+#include "glob.h"
 #include "lib/string/strlib.h"
 
 int main(int argc, char **arcv) {
 
-    set_prompt("\033[033m%p\033[0m %t \n >  ");
-    
+    init_glob();
+
+    set_prompt("\033[033m%P\033[0m %u %t \n >  ");
+
     // Run loop
     lash_loop();
     // load config file

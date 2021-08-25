@@ -26,13 +26,13 @@ char *get_prompt() {
     return prompt;
 }
 
-char *eval_prompt()
-{
+char *eval_prompt() {
     char currentdir[100];
     getcwd(currentdir,sizeof(currentdir));
     char *res = strrpl(prompt,"%p",currentdir);
     res = strrpl(res,"%t",gettime());
     res = strrpl(res,"%d",getdate());
-    //res = strrpl(res,"%u",current_user_name);
+    res = strrpl(res,"%P",strrpl(currentdir,user_home_path,"~/"));
+    res = strrpl(res,"%u",current_user_name);
     return res; 
 }
