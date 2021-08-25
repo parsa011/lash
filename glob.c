@@ -13,5 +13,4 @@ void init_glob()
 {
     current_user_name = getenv("USER");
     user_home_path = concat(3,"/home/",current_user_name,"/"); 
-    printf("%s\n",user_home_path);
 }
