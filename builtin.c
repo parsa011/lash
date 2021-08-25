@@ -56,13 +56,6 @@ int lash_help(char **args) {
 }
 
 int lash_exit(char **args) {
+    exit(0);
     return 0;
-}
-
-// after every time allocation , will check the target to be allocated
-void check_alloc(char *b) {
-    if (!b) {
-        fprintf(stderr, "lash : allocation error !");
-        exit(EXIT_FAILURE);
-    }
 }

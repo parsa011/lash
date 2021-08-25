@@ -44,6 +44,7 @@ char *lash_read_line() {
  *  return Null-terminated array of tokens.
  */
 char **lash_split_line(char *line,int *count) {
+
     int bufsize = LASH_TOK_BUFSIZE, position = 0;
     char **tokens = malloc(bufsize * sizeof(char *));
     char *token;
@@ -53,11 +54,11 @@ char **lash_split_line(char *line,int *count) {
 
     token = strtok(line,LASH_TOK_DELIM);
     /*
-     * if token has special char
-     * will find the index of special char
-     * if that was at the begining of the token will add special to our list 
-     * if that was and the end of token , will remove that from the end and add both token and special char
-     * and if that was in middle , will make token to 2 different pieces and both to our tokends
+     *  if token has special char
+     *  will find the index of special char
+     *  if that was at the begining of the token will add special to our list 
+     *  if that was and the end of token , will remove that from the end and add both token and special char
+     *  and if that was in middle , will make token to 2 different pieces and both to our tokends
      */
     while (token != NULL) {
         special = find_special_char(token);

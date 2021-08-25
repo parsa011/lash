@@ -52,3 +52,12 @@ int indexof(char *s,char n) {
     }
     return (int)(e - s);
 }
+
+int countchar(char* s, char x)             
+{
+    int i,count,lngth;
+    lngth = strlen(s);
+    count = 0;
+    for (i = 0; i < lngth ; i++){if (s[i] == x) count++; }
+    return count;
+}
