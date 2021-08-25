@@ -2,16 +2,16 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
-#include "basics.h"
+#include "lib/string/strlib.h"
 
 char *current_user_name;
-char *userpathname = "/home/";
+char *user_home_path;
 
 void init_glob()
 {
     current_user_name = getenv("USER");
-    //strcat(userpathname,current_user_name);
-    userpathname = (char *)malloc(strlen(userpathname) + strlen(current_user_name) * sizeof(char *));
-    strcat(userpathname,userpathname);
+    user_home_path = concat(3,"/home/",current_user_name,"/"); 
+    printf("%s\n",user_home_path);
 }

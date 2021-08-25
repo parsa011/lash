@@ -17,9 +17,9 @@
 int main(int argc, char **arcv) {
 
     init_glob();
-    // read configs from rc file
-    set_prompt("\033[033m%P\033[0m %t \n >  ");
-    
+
+    set_prompt("\033[033m%P\033[0m %u %t \n >  ");
+
     // Run loop
     lash_loop();
 
