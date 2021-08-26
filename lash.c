@@ -14,12 +14,14 @@
 #include "glob.h"
 #include "history.h"
 #include "lib/string/strlib.h"
+#include "lib/file/filelib.h"
 
 int main(int argc, char **arcv) {
 
     // initialize basics and read from config file
     init_glob();
     init_lash_history();
+
     set_prompt("\033[033m[%P]\033[0m-(%u)-{%t} \n >  ");
 
     // Run loop

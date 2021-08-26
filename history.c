@@ -16,7 +16,7 @@ uint64 history_poiner;
  */
 void init_lash_history() {
     history_file_path = concat(2,user_home_path,HISTORY_FILE_NAME);
-    history_file = fopen(strcat(user_home_path,HISTORY_FILE_NAME),"w+");
+    history_file = fopen(concat(2,user_home_path,HISTORY_FILE_NAME),"w+");
 }
 
 /*

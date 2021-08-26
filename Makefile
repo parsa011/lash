@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-I. -std=c17
 OBJDIR := dist
-SRC := prompt.c history.c lash.c builtin.c input.c glob.c lib/string/strlib.c lib/time/time.c
+SRC := prompt.c history.c lash.c builtin.c input.c glob.c lib/string/strlib.c lib/time/time.c lib/file/filelib.c
 OBJ := $(SRC:%.c=$(OBJDIR)/%.o)
 
 $(OBJDIR)/%.o: %.c
