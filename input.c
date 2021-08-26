@@ -10,6 +10,7 @@
 #include "builtin.h"
 #include "prompt.h"
 #include "lash.h"
+#include "history.h"
 #include "lib/string/strlib.h"
 /*
  *  brief Read a line of input from stdin.
@@ -26,6 +27,10 @@ char *lash_read_line() {
 
         if (c == EOF || c == EOL) {
             buffer[position++] = '\0';
+
+            // add to history
+            add_to_history(buffer,0);
+
             return buffer;
         } else
             buffer[position++] = c;
