@@ -24,6 +24,7 @@ void init_lash_history() {
  */
 void add_to_history(const char *line,int pos) {
     fprintf(history_file,"%s\n",line);
+    fflush(history_file);
 }
 
 /*
