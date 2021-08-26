@@ -12,7 +12,8 @@
 char *builtin_str[] = {
     "cd",
     "help",
-    "exit"};
+    "exit"
+};
 
 /*
  *  List of builtin commands, followed by their corresponding functions.
@@ -20,7 +21,8 @@ char *builtin_str[] = {
 int (*builtin_func[])(char **) = {
     &lash_cd,
     &lash_help,
-    &lash_exit};
+    &lash_exit
+};
 
 int lash_num_builtins() {
     return sizeof(builtin_str) / sizeof(char *);

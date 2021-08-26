@@ -18,7 +18,7 @@ int main(int argc, char **arcv) {
 
     init_glob();
 
-    set_prompt("\033[033m%P\033[0m %u %t \n >  ");
+    set_prompt("\033[033m[%P]\033[0m-(%u)-{%t} \n >  ");
 
     // Run loop
     lash_loop();
