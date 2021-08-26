@@ -4,3 +4,4 @@ lash
 dist/
 tags
 .vscode/
+.VSCodeCounter

@@ -12,16 +12,20 @@
 #include "prompt.h"
 #include "input.h"
 #include "glob.h"
+#include "history.h"
 #include "lib/string/strlib.h"
 
 int main(int argc, char **arcv) {
 
+    // initialize basics and read from config file
     init_glob();
-
+    init_lash_history();
     set_prompt("\033[033m[%P]\033[0m-(%u)-{%t} \n >  ");
 
     // Run loop
     lash_loop();
+    
+    close_history();
 
     return EXIT_SUCCESS;
 }
@@ -50,7 +54,6 @@ void lash_loop(void) {
 
         if (args != NULL) 
             lash_execute_shell(args,special_args,fileredirect,pipeargs);// Proceed
-        //status = lash_execute(args);
         cleanup();
         free(line);
         free(args);
