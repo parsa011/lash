@@ -34,8 +34,27 @@ void get_history(int line) {
 }
 
 /*
+ *  Remove special line of history
+ */ 
+void remove_history(int line) {
+}
+
+void history_set_pos() {
+}
+
+char *current_history() {
+    return "";
+}
+
+/*
  *  Close history file 
  */
 void close_history() {
     fclose(history_file);
+}
+
+/*
+ *  make history epmty
+ */
+void clear_history() {
 }

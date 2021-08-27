@@ -56,9 +56,13 @@ void lash_loop(void) {
 
         if (args != NULL) 
             lash_execute_shell(args,special_args,fileredirect,pipeargs);// Proceed
+
         cleanup();
         free(line);
         free(args);
+        for (int i = 0; i < LASH_TOK_BUFSIZE;i++) {
+            free(pipeargs[i]);
+        }
     } while (status);
 }
 
