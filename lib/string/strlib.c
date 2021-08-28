@@ -4,9 +4,9 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-char* strrpl(char* s, char* old,char* new)
+char *strrpl(char *s, char *old,char *new)
 {
-    char* result;
+    char *result;
     int i, cnt = 0;
     int newlen = strlen(new);
     int oldlen = strlen(old);

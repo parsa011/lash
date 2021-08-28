@@ -29,7 +29,7 @@ char *lash_read_line() {
             buffer[position++] = '\0';
 
             // add to history
-            add_to_history(buffer,0);
+            add_to_history(buffer,20);
 
             return buffer;
         } else

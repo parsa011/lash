@@ -72,7 +72,7 @@ void lash_loop(void) {
  *  Note: fileredirect[0,1] --> 0 = input, 1 = output. pipeargs = 3d array where each pipe is an array of arguements
  */
 char **lash_eval_args(char **args, int *count, int *special_args, char **fileredirect, char ***pipeargs) {
-    char ** new_args= malloc(LASH_TOK_BUFSIZE * sizeof(char*));
+    char **new_args = malloc(LASH_TOK_BUFSIZE * sizeof(char *));
     int i;
     int idx = 0;
     int idx2 = 0;

@@ -3,8 +3,10 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <fcntl.h>
 
 #include "lib/string/strlib.h"
+#include "lib/file/filelib.h"
 #include "glob.h"
 
 FILE *history_file;
@@ -23,8 +25,12 @@ void init_lash_history() {
  *  Add a line to history file , if post == -1 will and to bottome of file
  */
 void add_to_history(const char *line,int pos) {
+    // TODO : before add we have to check if last added command is not equals to new line
+    if (pos == -1)
+        pos = file_linecount(history_file);
+    fseek(history_file,10,SEEK_SET);
     fprintf(history_file,"%s\n",line);
-    fflush(history_file);
+    savechanges();
 }
 
 /*
@@ -51,6 +57,13 @@ char *current_history() {
  */
 void close_history() {
     fclose(history_file);
+}
+
+/*
+ *  Add changes to history file
+ */
+void savechanges() {
+    fflush(history_file);
 }
 
 /*
