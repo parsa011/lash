@@ -51,10 +51,10 @@ int lash_help(char **args) {
     );
 
     for (i = 0; i < lash_num_builtins(); i++) {
-        printf("  %s\n", builtin_str[i]);
+        printl(builtin_str[i]);
     }
 
-    printf("Use the man command for information on other programs.\n");
+    printl("Use the man command for information on other programs.");
     return 1;
 }
 
